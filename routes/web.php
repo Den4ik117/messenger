@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', WelcomeController::class);
+Route::get('/', WelcomeController::class)->name('welcome');
+Route::get('/auth/{user}', AuthController::class)->name('auth');
+Route::post('/send', [MessageController::class, 'store']);
